@@ -41,10 +41,10 @@ int main(int argc, char** argv) {
 int getChoice() {
     int choice;
     
-    cout << "1 - plain items" << endl;
+    cout << "\n1 - plain items" << endl;
     cout << "2 - helpful items" << endl;
     cout << "3 - harmful items" << endl;
-    cout << "4 - quit program" << endl;
+    cout << "4 - quit program\n" << endl;
     
     cin >> choice;
     return choice;
