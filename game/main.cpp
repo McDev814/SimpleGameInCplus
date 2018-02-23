@@ -7,19 +7,31 @@
 
 #include <cstdlib>
 #include <iostream>
-
+#include <fstream>
 using namespace std;
 
 int getChoice();
+void displayItems(int x);
 
 // Main Function
 int main(int argc, char** argv) {
 
     int choice;
     
-    choice = getChoice();
     
     while (choice != 4) {
+        choice = getChoice();
+        switch(choice) {
+            case 1: 
+                displayItems(1);
+                break;
+            case 2: 
+                displayItems(2);
+                break;
+            case 3: 
+                displayItems(3);
+                break;
+        }
         choice = getChoice();
     }
     
@@ -36,5 +48,36 @@ int getChoice() {
     
     cin >> choice;
     return choice;
+    
+}
+
+// display items function
+void displayItems(int x) {
+    
+    ifstream objectsFile("objects.txt");
+    string name;
+    double power;
+    
+    if (x == 1) {
+        while(objectsFile >> name >> power) {
+            if (power == 0) {
+                cout << name << " " << power << endl;
+            }
+        }
+    }
+    if (x == 2) {
+        while(objectsFile >> name >> power) {
+            if (power > 0) {
+                cout << name << " " << power << endl;
+            }
+        }
+    }
+    if (x == 3) {
+        while(objectsFile >> name >> power) {
+            if (power < 0) {
+                cout << name << " " << power << endl;
+            }
+        }
+    }
     
 }
