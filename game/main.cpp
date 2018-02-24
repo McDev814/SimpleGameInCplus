@@ -8,76 +8,63 @@
 #include <cstdlib>
 #include <iostream>
 #include <fstream>
+#include "Game.h"
 using namespace std;
 
+int menu();
 int getChoice();
-void displayItems(int x);
+void displayMenu(int x);
 
 // Main Function
 int main(int argc, char** argv) {
 
+    return menu();
+    
+}
+
+int menu() {
+    
     int choice;
     
-    
-    while (choice != 4) {
+    while (choice != 3) {
         choice = getChoice();
         switch(choice) {
+            case 0: 
+                cout << "\nchose to play game \n";
+                break;
             case 1: 
-                displayItems(1);
+                cout << "\nchose to change user \n";
                 break;
             case 2: 
-                displayItems(2);
+                cout << "\nchose to change settings \n";
                 break;
-            case 3: 
-                displayItems(3);
+            case 3:
+                return 0;
+                break;
+            default:
+                cout << "\nInvalid option! Press a key to choose: p, u, s, or q\n";
                 break;
         }
-        choice = getChoice();
     }
-    
+    return 0;
+
 }
 
 // getChoice function
 int getChoice() {
-    int choice;
+    char choice;
+    char options[4] = {'p','u','s','q'};
     
-    cout << "\n1 - plain items" << endl;
-    cout << "2 - helpful items" << endl;
-    cout << "3 - harmful items" << endl;
-    cout << "4 - quit program\n" << endl;
+    cout << "\n   Main Menu\n";
+    cout << "p - play game" << endl;
+    cout << "u - change user" << endl;
+    cout << "s - settings" << endl;
+    cout << "q - quit\n" << endl;
     
     cin >> choice;
-    return choice;
     
-}
-
-// display items function
-void displayItems(int x) {
-    
-    ifstream objectsFile("objects.txt");
-    string name;
-    double power;
-    
-    if (x == 1) {
-        while(objectsFile >> name >> power) {
-            if (power == 0) {
-                cout << name << " " << power << endl;
-            }
-        }
-    }
-    if (x == 2) {
-        while(objectsFile >> name >> power) {
-            if (power > 0) {
-                cout << name << " " << power << endl;
-            }
-        }
-    }
-    if (x == 3) {
-        while(objectsFile >> name >> power) {
-            if (power < 0) {
-                cout << name << " " << power << endl;
-            }
-        }
+    for (int x = 0; x < 4; x++) {
+        if(choice == options[x]) { return x; }
     }
     
 }
