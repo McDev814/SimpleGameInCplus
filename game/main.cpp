@@ -8,7 +8,7 @@
 #include <cstdlib>
 #include <iostream>
 #include <fstream>
-#include "Game.h"
+#include "Player.h"
 using namespace std;
 
 int menu();
@@ -17,11 +17,13 @@ void displayMenu(int x);
 
 // Main Function
 int main(int argc, char** argv) {
-
+    
+    Player player;
     return menu();
     
 }
 
+// Menu Function
 int menu() {
     
     int choice;
@@ -30,7 +32,7 @@ int menu() {
         choice = getChoice();
         switch(choice) {
             case 0: 
-                cout << "\nchose to play game \n";
+                cout << "\nchose to change user \n";
                 break;
             case 1: 
                 cout << "\nchose to change user \n";
