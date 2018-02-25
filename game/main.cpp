@@ -19,6 +19,7 @@ void displayMenu(int x);
 int main(int argc, char** argv) {
     
     Player player;
+    player.initPlayer();
     return menu();
     
 }
