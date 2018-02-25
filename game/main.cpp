@@ -35,13 +35,8 @@ int menu() {
                 cout << "\nchose to play game \n";
                 break;
             case 1: 
-                cout << "\nchose to play game \n";
-                // Next bit of trickery to figure out
-                /*
                 p.savePlayer();
-                p = new Player();
                 p.initPlayer();
-                */
                 break;
             case 2: 
                 cout << "\nchose to change settings \n";
@@ -64,7 +59,7 @@ int getChoice() {
     cout << "\n   Main Menu\n";
     cout << "p - play game" << endl;
     cout << "u - change user" << endl;
-    cout << "s - settings" << endl;
+    // cout << "s - settings" << endl;
     cout << "q - quit\n" << endl;
     
     cin >> choice;
