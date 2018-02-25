@@ -19,11 +19,17 @@ double allTimeScore;
 Player::Player() {
     
 }
-Player::~Player() {
-    
-}
 
 void Player::initPlayer() {
+    
+    // Clear variable members if previously initialized
+    if (name != "") {
+        id = 0;
+        name = "";
+        score = 0;
+        allTimeScore = 0;
+        
+    }
     
     bool isSet = false;
     string wantName;
@@ -35,7 +41,7 @@ void Player::initPlayer() {
     cout << "Enter a player name \n";
     cout << "Each player name will have a different history.\n";
     cout << "Name: ";
-    getline(cin, wantName);
+    cin >> wantName;
     system("clear");
     
     
@@ -68,7 +74,6 @@ void Player::initPlayer() {
     fh.close();
 }
 
-// !!!!!!!!!!!!NEED TO COMPARE CURRENT AND ALL TIME SCORES!!!!!!!!!!
 void Player::savePlayer() {
     
     string tempName;
@@ -79,7 +84,7 @@ void Player::savePlayer() {
     fh.seekg(ios::beg);
     while(fh >> tempID >> tempName >> tempScore) {
         // When a match is found, update players.txt
-        if (id == tempID) {
+        if (id == tempID && tempScore > score) {
             streampos x = fh.tellg();
             x = x - (long) 1;
             fh.seekp(x);
