@@ -13,11 +13,11 @@ using namespace std;
 int menu();
 int getChoice();
 void displayMenu(int x);
+Player p;
 
 // Main Function
 int main(int argc, char** argv) {
     
-    Player p;
     p.initPlayer();
     return menu();
     
@@ -32,10 +32,16 @@ int menu() {
         choice = getChoice();
         switch(choice) {
             case 0: 
-                cout << "\nchose to change user \n";
+                cout << "\nchose to play game \n";
                 break;
             case 1: 
-                cout << "\nchose to change user \n";
+                cout << "\nchose to play game \n";
+                // Next bit of trickery to figure out
+                /*
+                p.savePlayer();
+                p = new Player();
+                p.initPlayer();
+                */
                 break;
             case 2: 
                 cout << "\nchose to change settings \n";
@@ -48,8 +54,6 @@ int menu() {
                 break;
         }
     }
-    return 0;
-
 }
 
 // getChoice function
@@ -64,6 +68,8 @@ int getChoice() {
     cout << "q - quit\n" << endl;
     
     cin >> choice;
+    
+    system("clear");
     
     for (int x = 0; x < 4; x++) {
         if(choice == options[x]) { return x; }
