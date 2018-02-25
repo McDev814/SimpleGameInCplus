@@ -20,16 +20,9 @@ using namespace std;
 class Player {
 public:
     Player();
+    ~Player();
     void initPlayer();
-protected:
-    void setID(int x);
-    int getID();
-    void setName(string s);
-    string getName();
-    void setScore(double x);
-    double getScore();
-    void setAllTimeScore(double x);
-    double getAllTimeScore();
+    void savePlayer();
 private:
     int id;
     string name;
