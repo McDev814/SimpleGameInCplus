@@ -20,7 +20,6 @@ using namespace std;
 class Player {
 public:
     Player();
-    ~Player();
     void initPlayer();
     void savePlayer();
 private:
