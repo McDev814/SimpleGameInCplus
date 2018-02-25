@@ -15,8 +15,6 @@
 #define PLAYER_H
 
 #include <cstdlib>
-#include <iostream>
-#include "Player.h"
 using namespace std;
 
 class Player {
