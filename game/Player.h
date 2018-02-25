@@ -22,16 +22,21 @@ using namespace std;
 class Player {
 public:
     Player();
-    Player(string s);
-    Player(const Player& orig);
-    virtual ~Player();
-    void initName();
+    void initPlayer();
+protected:
+    void setID(int x);
+    int getID();
     void setName(string s);
     string getName();
+    void setScore(double x);
+    double getScore();
+    void setAllTimeScore(double x);
+    double getAllTimeScore();
 private:
-    string name;
     int id;
-
+    string name;
+    double score;
+    double allTimeScore;
 };
 
 #endif /* PLAYER_H */
