@@ -19,7 +19,7 @@ double allTimeScore;
 Player::Player() {
 }
 
-void initPlayer() {
+void Player::initPlayer() {
     
     bool isSet = false;
     string wantName;
@@ -60,34 +60,34 @@ void initPlayer() {
     fh.close();
 }
 
-void setID(int x) {
+void Player::setID(int x) {
     id = x;
 }
 
-int getID() {
+int Player::getID() {
     return id;
 }
 
-void setName(string s) {
+void Player::setName(string s) {
     name = s;
 }
 
-string getName() {
+string Player::getName() {
     return name;
 }
 
-void setScore(double x) {
+void Player::setScore(double x) {
     score = x;
 }
 
-double getScore() {
+double Player::getScore() {
     return score;
 }
 
-void setAllTimeScore(double x) {
+void Player::setAllTimeScore(double x) {
     allTimeScore = x;
 }
 
-double getAllTimeScore() {
+double Player::getAllTimeScore() {
     return allTimeScore;
 }
