@@ -7,7 +7,6 @@
 
 #include <cstdlib>
 #include <iostream>
-#include <fstream>
 #include "Player.h"
 using namespace std;
 
@@ -18,8 +17,8 @@ void displayMenu(int x);
 // Main Function
 int main(int argc, char** argv) {
     
-    Player player;
-    player.initPlayer();
+    Player p;
+    p.initPlayer();
     return menu();
     
 }
