@@ -16,6 +16,9 @@ public:
     void damage(int change);
     void heal(int change);
     void award(int pts);
+    int getHealth();
+    double getScore();
+    double getAllTime();
 private:
     int id;
     std::string name;
