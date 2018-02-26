@@ -30,7 +30,7 @@ int Monster::fight(float diff) {
 string Monster::speak() {
     
     srand (time(NULL));
-    int i = rand() % sayings.size() + 1;
+    int i = rand() % sayings.size();
     return sayings.at(i);
     
 }
