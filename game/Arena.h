@@ -15,6 +15,9 @@
 #define ARENA_H
 
 #include "Player.h"
+#include "Enemy.h"
+#include "Item.h"
+#include <vector>
 
 class Arena {
 public:
@@ -23,7 +26,14 @@ public:
 private:
     float difficulty;
     Player p;
-
+    vector<Enemy> enemies;
+    void generateEnemy();
+    vector<Item> items;
+    void generateItems();
+    Enemy getEnemy();
+    Item getItem();
+    int comeAcross();
+    
 };
 
 #endif /* ARENA_H */
