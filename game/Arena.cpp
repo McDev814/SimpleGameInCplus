@@ -67,23 +67,31 @@ void Arena::play() {
         system("clear");
         srand(time(NULL));
         int mult = rand() % 3 + 1;
+        int points = rand() % 20 + 10;
         cout << "You have come across a ";
         if (comeAcross()) {
             Item* i = getItem();
             cout << i->get() << " which will increase your health by " << i->use() << " points!\n";
+            player.award(points / 2);
+            cout << "You also recieved " << points / 2 << " from it.\n\n";
             player.heal(i->use());
         } else {
             Enemy* e = getEnemy();
             int i = e->fight(difficulty);
-            int a = i * mult;
-            cout << e->getName() << "! Who says:\n\n" << e->speak() << endl;
-            cout << "\nAfter that fight, your health is at " << i << " points!\n";
-            player.award(a);
-            cout << "Though, you did get " << a << " points for your battle!";
+            i *= mult;
+            cout << e->getName() << "! Who says:\n\n" << e->speak() << endl << endl;
+            player.damage(i);
+            cout << "After that fight, your health is at " << player.getHealth() << " points!\n";
+            player.award(points * 2);
+            cout << "You also gained " << points * 2 << " for your bravery!\n\n";
+            
         }
-        player.award(rand() % 20);
-        cout << "Press Enter to keep going, you must finish!";
+        
+        cout << "Now your total score is: " << player.getScore() << endl;
+        cout << "Your total health is at:  " << player.getHealth() << endl << endl;
+        cout << "Press a letter then Enter to move on.  |  ";
         cin >> temp;
+        rounds++;
     }
     
     system("clear");
@@ -94,11 +102,12 @@ void Arena::play() {
         cout << "Congratulations, you made it to the top of\n";
         cout << "Mt. Moridoryiama!!!!!!!!!!!!!!!!!\n\n";
     }
+    player.save();
     cout << "Your score is: " << player.getScore() << endl;
     cout << "Your previous all time best was: " << player.getAllTime() << endl;
-    cout << "\n\nPress Enter to go back to the main menu.";
-    
-    
+    cout << "\n\nPress any letter then Enter to return to main menu.  |  ";
+    cin >> temp;
+    system("clear");
 }
 
 int Arena::comeAcross() {
