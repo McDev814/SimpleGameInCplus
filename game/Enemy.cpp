@@ -7,13 +7,7 @@
 
 #include <cstdlib>
 #include "Enemy.h"
-#include <string>
-#include <vector>
 using namespace std;
-
-string name;
-vector<string> sayings;
-int threatLevel;
 
 Enemy::Enemy() {
 }
