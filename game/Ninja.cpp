@@ -37,3 +37,7 @@ string Ninja::speak() {
     return sayings.at(i);
     
 }
+
+string Ninja::getName() {
+    return name;
+}
