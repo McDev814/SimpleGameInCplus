@@ -11,12 +11,6 @@
 #include "Player.h"
 using namespace std;
 
-int id;
-string name;
-int health;
-double score;
-double allTimeScore;
-
 Player::Player() {
     
 }
