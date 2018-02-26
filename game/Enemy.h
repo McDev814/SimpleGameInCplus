@@ -15,6 +15,7 @@ public:
     Enemy();
     virtual int fight(float diff)=0;
     virtual std::string speak()=0;
+    virtual std::string getName()=0;
 protected:
 
 
