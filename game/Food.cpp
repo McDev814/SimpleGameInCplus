@@ -6,6 +6,7 @@
  */
 
 #include "Food.h"
+using namespace std;
 
 Food::Food() : name("food") {
 }
