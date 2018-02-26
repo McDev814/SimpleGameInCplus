@@ -8,7 +8,6 @@
 #include "Ninja.h"
 #include "Enemy.h"
 #include <cstdlib>
-#include <iostream>
 #include <time.h>
 using namespace std;
 
