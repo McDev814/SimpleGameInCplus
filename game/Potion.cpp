@@ -20,5 +20,5 @@ string Potion::get() {
 
 int Potion::use() {
     srand(time(NULL));
-    return rand() % 15 + 5;
+    return rand() % 20 + 5;
 }
