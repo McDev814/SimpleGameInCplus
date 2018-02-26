@@ -80,7 +80,7 @@ void Player::save() {
     fh.seekg(ios::beg);
     while(fh >> tempID >> tempName >> tempScore) {
         // When a match is found, update players.txt
-        if (id == tempID && tempScore > score) {
+        if (id == tempID && tempScore < score) {
             streampos x = fh.tellg();
             x = x - (long) 1;
             fh.seekp(x);
@@ -88,6 +88,7 @@ void Player::save() {
             break;
         }
     }
+    fh.close();
 }
 
 void Player::damage(int change) {
