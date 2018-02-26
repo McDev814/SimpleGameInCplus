@@ -33,7 +33,7 @@ int Ninja::fight(float diff) {
 string Ninja::speak() {
     
     srand (time(NULL));
-    int i = rand() % sayings.size() + 1;
+    int i = rand() % sayings.size();
     return sayings.at(i);
     
 }
