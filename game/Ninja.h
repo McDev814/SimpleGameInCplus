@@ -1,9 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /* 
  * File:   Ninja.h
  * Author: Matt McCain <mmccain814@gmail.com>
@@ -14,13 +8,19 @@
 #ifndef NINJA_H
 #define NINJA_H
 
+#include "Enemy.h"
+#include <vector>
+#include <string>
+
 class Ninja : public Enemy {
 public:
     Ninja();
     int fight(float diff);
-    void speak();
+    std::string speak();
 private:
-
+    std::string name;
+    std::vector<std::string> sayings;
+    int threatLevel;
 };
 
 #endif /* NINJA_H */
