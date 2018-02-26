@@ -17,6 +17,7 @@ public:
     Monster();
     int fight(float diff);
     std::string speak();
+    std::string getName();
 private:
     std::string name;
     std::vector<std::string> sayings;
