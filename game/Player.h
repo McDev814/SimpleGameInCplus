@@ -8,17 +8,18 @@
 #ifndef PLAYER_H
 #define PLAYER_H
 
-#include <cstdlib>
-using namespace std;
-
 class Player {
 public:
     Player();
-    void initPlayer();
-    void savePlayer();
+    void init();
+    void save();
+    void damage(int change);
+    void heal(int change);
+    void award(int pts);
 private:
     int id;
-    string name;
+    std::string name;
+    int health;
     double score;
     double allTimeScore;
 };
