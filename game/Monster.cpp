@@ -34,3 +34,7 @@ string Monster::speak() {
     return sayings.at(i);
     
 }
+
+string Monster::getName() {
+    return name;
+}
