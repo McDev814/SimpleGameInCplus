@@ -13,6 +13,7 @@ using namespace std;
 
 int id;
 string name;
+int health;
 double score;
 double allTimeScore;
 
@@ -20,7 +21,7 @@ Player::Player() {
     
 }
 
-void Player::initPlayer() {
+void Player::init() {
     
     // Clear variable members if previously initialized
     if (name != "") {
@@ -37,7 +38,6 @@ void Player::initPlayer() {
     int tempID = 0;
     double tempScore = 0;
     
-    system("clear");
     cout << "Enter a player name \n";
     cout << "Each player name will have a different history.\n";
     cout << "Name: ";
@@ -53,9 +53,10 @@ void Player::initPlayer() {
         if (tempName == wantName) {
             id = tempID;
             name = tempName;
+            health = 100;
             score = 0;
             allTimeScore = tempScore;
-            printf("Great, your highest score so far is %.2f points!", allTimeScore);
+            printf("Great, your highest score so far is %.2f points!\n\n", allTimeScore);
             isSet = true;
             break;
         }
@@ -64,9 +65,10 @@ void Player::initPlayer() {
     if (!isSet) {
         // If no player was found, add new one to players.txt
         fh.open("players.txt", ios::app);
-        cout << "Great, you're a new player!\n";
+        cout << "Great, you're a new player!\n\n";
         id = tempID + 1;
         name = wantName;
+        health = 100;
         score = 0;
         allTimeScore = 0;
         fh << id << ' ' << name << ' ' << allTimeScore << ' ' << endl;
@@ -74,7 +76,7 @@ void Player::initPlayer() {
     fh.close();
 }
 
-void Player::savePlayer() {
+void Player::save() {
     
     string tempName;
     int tempID = 0;
@@ -92,4 +94,16 @@ void Player::savePlayer() {
             break;
         }
     }
+}
+
+void Player::damage(int change) {
+    health -= change;
+}
+
+void Player::heal(int change) {
+    health += change;
+}
+
+void Player::award(int pts) {
+    score += pts;
 }
