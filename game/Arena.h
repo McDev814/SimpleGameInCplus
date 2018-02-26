@@ -15,16 +15,14 @@
 
 class Arena {
 public:
-    Arena(Player p, float diff);
+    Arena(Player pt, float diff);
     void play();
 protected:
 private:
     float difficulty;
-    Player p;
+    Player player;
     std::vector<Enemy*> enemies;
-    void generateEnemy();
     std::vector<Item*> items;
-    void generateItems();
     Enemy* getEnemy();
     Item* getItem();
     int comeAcross();
