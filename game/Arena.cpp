@@ -21,18 +21,38 @@
 #include "Warrior.h"
 using namespace std;
 
-Arena::Arena(Player p, float diff)
-:p(p), difficulty(diff)
+Arena::Arena(Player pt, float diff)
+:player(pt), difficulty(diff)
 {
 }
 
 void Arena::play() {
     
-    generateEnemy();
-    generateItems();
+    // Generate Enemy* vector
+    Ninja ninja;
+    Enemy* ne = &ninja;
+    Monster monster;
+    Enemy* me = &monster;
+    Warrior warrior;
+    Enemy* we = &warrior;
+    enemies.push_back(ne);
+    enemies.push_back(me);
+    enemies.push_back(we);
+    
+    // Generate Items* vector
+    HerbalTea tea;
+    Item* t = &tea;
+    Potion potion;
+    Item* p = &potion;
+    Food food;
+    Item* f = &food;
+    items.push_back(t);
+    items.push_back(p);
+    items.push_back(f);
+    
     int sentinal;
     int rounds = 0;
-    string t;
+    string temp;
     
     cout << "Welcome to Mt. Moridoryiama, do you think you have\n";
     cout << "What it takes to conquer the steep mountain side?\n";
@@ -43,7 +63,7 @@ void Arena::play() {
     cin >> sentinal;
     
     
-    while (rounds < sentinal && p.getHealth() > 0) {
+    while (rounds < sentinal && player.getHealth() > 0) {
         system("clear");
         srand(time(NULL));
         int mult = rand() % 3 + 1;
@@ -51,19 +71,19 @@ void Arena::play() {
         if (comeAcross()) {
             Item* i = getItem();
             cout << i->get() << " which will increase your health by " << i->use() << " points!\n";
-            p.heal(i->use());
+            player.heal(i->use());
         } else {
             Enemy* e = getEnemy();
             int i = e->fight(difficulty);
             int a = i * mult;
             cout << e->getName() << "! Who says:\n\n" << e->speak() << endl;
             cout << "\nAfter that fight, your health is at " << i << " points!\n";
-            p.award(a);
+            player.award(a);
             cout << "Though, you did get " << a << " points for your battle!";
         }
-        p.award(rand() % 20);
+        player.award(rand() % 20);
         cout << "Press Enter to keep going, you must finish!";
-        cin >> t;
+        cin >> temp;
     }
     
     system("clear");
@@ -74,8 +94,8 @@ void Arena::play() {
         cout << "Congratulations, you made it to the top of\n";
         cout << "Mt. Moridoryiama!!!!!!!!!!!!!!!!!\n\n";
     }
-    cout << "Your score is: " << p.getScore() << endl;
-    cout << "Your previous all time best was: " << p.getAllTime() << endl;
+    cout << "Your score is: " << player.getScore() << endl;
+    cout << "Your previous all time best was: " << player.getAllTime() << endl;
     cout << "\n\nPress Enter to go back to the main menu.";
     
     
@@ -89,38 +109,13 @@ int Arena::comeAcross() {
 Enemy* Arena::getEnemy() {
     
     srand(time(NULL));
-    int pos = rand() % enemies.size() + 1;
+    int pos = rand() % enemies.size();
     return enemies.at(pos);
     
 }
 
 Item* Arena::getItem() {
     srand(time(NULL));
-    int pos = rand() % items.size() + 1;
+    int pos = rand() % items.size();
     return items.at(pos);
-}
-
-void Arena::generateEnemy() {
-    Ninja ninja;
-    Enemy* ne = &ninja;
-    Monster monster;
-    Enemy* me = &monster;
-    Warrior warrior;
-    Enemy* we = &warrior;
-    enemies.push_back(ne);
-    enemies.push_back(me);
-    enemies.push_back(we);
-    
-}
-
-void Arena::generateItems() {
-    HerbalTea tea;
-    Item* t = &tea;
-    Potion potion;
-    Item* p = &potion;
-    Food food;
-    Item* f = &food;
-    items.push_back(t);
-    items.push_back(p);
-    items.push_back(f);
 }
