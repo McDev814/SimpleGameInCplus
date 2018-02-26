@@ -34,3 +34,7 @@ string Warrior::speak() {
     return sayings.at(i);
     
 }
+
+string Warrior::getName() {
+    return name;
+}
