@@ -33,7 +33,6 @@ int menu() {
         switch(choice) {
             case 0: 
             {
-                cout << "\nchose to play game \n";
                 Arena arena(player, difficulty);
                 arena.play();
             }
