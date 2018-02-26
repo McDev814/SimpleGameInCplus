@@ -8,6 +8,7 @@
 #include <cstdlib>
 #include <iostream>
 #include "Player.h"
+#include "Arena.h"
 using namespace std;
 
 int menu();
@@ -31,22 +32,32 @@ int menu() {
         choice = getChoice();
         switch(choice) {
             case 0: 
+            {
                 cout << "\nchose to play game \n";
-                Arena arena(p, difficulty);
+                Arena arena(player, difficulty);
                 arena.play();
+            }
                 break;
             case 1: 
+            {
                 player.save();
                 player.init();
+            }
                 break;
             case 2: 
+            {
                 changeDifficulty();
+            }
                 break;
             case 3:
+            {
                 return 0;
+            }
                 break;
             default:
+            {
                 cout << "\nInvalid option! Press a key to choose: p, u, s, or q\n";
+            }
                 break;
         }
     }
