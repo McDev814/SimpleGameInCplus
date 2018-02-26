@@ -8,6 +8,9 @@
 #ifndef ENEMY_H
 #define ENEMY_H
 
+#include <string>
+#include <vector>
+
 class Enemy {
 public:
     Enemy();
