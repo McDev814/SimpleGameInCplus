@@ -15,7 +15,7 @@ Warrior::Warrior()
 :name("Warrior"), threatLevel(7),
     sayings({"After what I've been through, this will be like stealing candy from a baby!",
     "I'm about to make mincemeat out of you!",
-    "Are you hiring a developer intern? You should hire Matt McCain. After I whip your butt."
+    "Are you hiring a developer intern? You should hire Matt McCain. After I whip your butt.",
     "Say hello to my little friend!",
     "Looking at me??? Oh, this machete? Don't worry, I haven't killed that many people with it."})
 {
@@ -30,7 +30,7 @@ int Warrior::fight(float diff) {
 string Warrior::speak() {
     
     srand (time(NULL));
-    int i = rand() % sayings.size() + 1;
+    int i = rand() % sayings.size();
     return sayings.at(i);
     
 }
