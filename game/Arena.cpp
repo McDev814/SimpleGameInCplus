@@ -11,9 +11,6 @@
 #include "Arena.h"
 using namespace std;
 
-Player p;
-float difficulty;
-
 Arena::Arena(Player p, float diff)
 :p(p), difficulty(diff)
 {
