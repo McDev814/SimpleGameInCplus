@@ -16,6 +16,7 @@ Monster::Monster()
         sayings({"LOOK! Rocks are falling from the sky!",
         "Argh, I'm going to smash your ugly face with my fists!",
         "Everyone says I'm ugly, so I'm going to make you ugly too!",
+        "Are you hiring a developer intern? You should hire Matt McCain. After I crush your skull.",
         "Hey, I'm just going to toss you off this cliff, let me know if you find anything down there."})
 {
 }
