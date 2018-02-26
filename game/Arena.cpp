@@ -18,7 +18,7 @@ Arena::Arena(Player p, float diff)
 
 void Arena::play() {
     
-    cout << "Will implement play later.";
+    cout << "Will implement play later.\n";
     
     
 }
