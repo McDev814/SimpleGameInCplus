@@ -101,3 +101,15 @@ void Player::heal(int change) {
 void Player::award(int pts) {
     score += pts;
 }
+
+int Player::getHealth() {
+    return health;
+}
+
+double Player::getScore() {
+    return score;
+}
+
+double Player::getAllTime() {
+    return allTimeScore;
+}
