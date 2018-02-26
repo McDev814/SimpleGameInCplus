@@ -8,8 +8,17 @@
 #include <cstdlib>
 #include <iostream>
 #include <time.h>
-#include "Player.h"
+#include <vector>
 #include "Arena.h"
+#include "Enemy.h"
+#include "Food.h"
+#include "HerbalTea.h"
+#include "Item.h"
+#include "Monster.h"
+#include "Ninja.h"
+#include "Player.h"
+#include "Potion.h"
+#include "Warrior.h"
 using namespace std;
 
 Arena::Arena(Player p, float diff)
@@ -40,14 +49,14 @@ void Arena::play() {
         int mult = rand() % 3 + 1;
         cout << "You have come across a ";
         if (comeAcross()) {
-            Item i = getItem();
-            cout << i.get() << " which will increase your health by " << i.use() << " points!\n";
-            p.heal(i.use());
+            Item* i = getItem();
+            cout << i->get() << " which will increase your health by " << i->use() << " points!\n";
+            p.heal(i->use());
         } else {
-            Enemy e = getEnemy();
-            int i = e.fight(difficulty);
+            Enemy* e = getEnemy();
+            int i = e->fight(difficulty);
             int a = i * mult;
-            cout << e.getName() << "! Who says:\n\n" << e.speak() << endl;
+            cout << e->getName() << "! Who says:\n\n" << e->speak() << endl;
             cout << "\nAfter that fight, your health is at " << i << " points!\n";
             p.award(a);
             cout << "Though, you did get " << a << " points for your battle!";
@@ -77,35 +86,41 @@ int Arena::comeAcross() {
     return rand() % 2;
 }
 
-Enemy Arena::getEnemy() {
+Enemy* Arena::getEnemy() {
     
     srand(time(NULL));
-    int pos = rand() % enemies.size_type + 1;
+    int pos = rand() % enemies.size() + 1;
     return enemies.at(pos);
     
 }
 
-Item Arena::getItem() {
+Item* Arena::getItem() {
     srand(time(NULL));
-    int pos = rand() % items.size_type + 1;
+    int pos = rand() % items.size() + 1;
     return items.at(pos);
 }
 
 void Arena::generateEnemy() {
     Ninja ninja;
+    Enemy* ne = &ninja;
     Monster monster;
+    Enemy* me = &monster;
     Warrior warrior;
-    enemies.push_back(ninja);
-    enemies.push_back(monster);
-    enemies.push_back(warrior);
+    Enemy* we = &warrior;
+    enemies.push_back(ne);
+    enemies.push_back(me);
+    enemies.push_back(we);
     
 }
 
 void Arena::generateItems() {
     HerbalTea tea;
+    Item* t = &tea;
     Potion potion;
+    Item* p = &potion;
     Food food;
-    items.push_back(tea);
-    items.push_back(potion);
-    items.push_back(food);
+    Item* f = &food;
+    items.push_back(t);
+    items.push_back(p);
+    items.push_back(f);
 }
