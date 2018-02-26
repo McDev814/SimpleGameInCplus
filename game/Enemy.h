@@ -9,7 +9,6 @@
 #define ENEMY_H
 
 #include <string>
-#include <vector>
 
 class Enemy {
 public:
@@ -17,9 +16,7 @@ public:
     virtual int fight(float diff)=0;
     virtual std::string speak()=0;
 protected:
-    std::string name;
-    std::vector<std::string> sayings;
-    int threatLevel;
+
 
 };
 
