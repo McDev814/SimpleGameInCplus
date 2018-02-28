@@ -73,7 +73,7 @@ void Arena::play() {
             Item* i = getItem();
             cout << i->get() << " which will increase your health by " << i->use() << " points!\n";
             player.award(points / 2);
-            cout << "You also recieved " << points / 2 << " from it.\n\n";
+            cout << "You also recieved " << points / 2 << " points from it.\n\n";
             player.heal(i->use());
         } else {
             Enemy* e = getEnemy();
