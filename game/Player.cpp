@@ -45,7 +45,7 @@ void Player::init() {
     fstream fh("players.txt", ios::in);
     fh.seekg(ios::beg);
     while(fh >> tempID >> tempName >> tempScore) {
-        // If a match is found, add to players.txt
+        // If a match is found, load values to member variables
         if (tempName == wantName) {
             id = tempID;
             name = tempName;
@@ -78,7 +78,7 @@ void Player::save() {
     int tempID;
     int tempScore;
     
-    // Find player and replace best score if they have bested themselves
+    // Copy players.txt to temp.txt, and update score if player has bested themselves
     ifstream ifh("players.txt");
     ofstream ofh("temp.txt");
     while(ifh >> tempID >> tempName >> tempScore) {
