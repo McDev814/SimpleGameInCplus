@@ -77,23 +77,30 @@ void Player::save() {
     string tempName;
     int tempID;
     int tempScore;
-    string wait;
     
-    fstream fh("players.txt", ios::in | ios::out);
-    fh.seekg(ios::beg);
-    while(fh >> tempID >> tempName >> tempScore) {
-        if (id == tempID && tempScore < score) {
-            streampos x = fh.tellg();
-            x = x - (long) 1;
-            fh.seekp(x);
-            // Keeping format correct, but not writing correct value. 
-            // Player::getScore() {return score;} shows correct score,
-            // which is called in game just before Player::save();
-            fh << printf("%d \n", score);
-            break;
+    // Find player and replace best score if they have bested themselves
+    ifstream ifh("players.txt");
+    ofstream ofh("temp.txt");
+    while(ifh >> tempID >> tempName >> tempScore) {
+        if (id == tempID && score > tempScore) {
+            ofh << tempID << ' ' << tempName << ' ' << score << ' ' << endl;
+        } else {
+            ofh << tempID << ' ' << tempName << ' ' << tempScore << ' ' << endl;
         }
     }
-    fh.close();
+    ifh.close();
+    ofh.close();
+    // Write contents of temp.txt back to players.txt
+    ifh.open("temp.txt");
+    ofh.open("players.txt");
+    while(ifh >> tempID >> tempName >> tempScore) {
+        ofh << tempID << ' ' << tempName << ' ' << tempScore << ' ' << endl;
+    }
+    ifh.close();
+    ofh.close();
+    // Delete the temp file
+    system("rm temp.txt");
+    
 }
 
 void Player::damage(int change) {
