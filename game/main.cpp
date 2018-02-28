@@ -20,15 +20,9 @@ float difficulty = 1;
 int main() {
     
     player.init();
-    return menu();
-    
-}
-
-int menu() {
-    
     int choice;
     
-    while (choice != 3) {
+    while (true) {
         choice = getChoice();
         switch(choice) {
             case 0: 
