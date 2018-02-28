@@ -17,14 +17,14 @@ public:
     void heal(int change);
     void award(int pts);
     int getHealth();
-    double getScore();
-    double getAllTime();
+    int getScore();
+    int getAllTime();
 private:
     int id;
     std::string name;
     int health;
-    double score;
-    double allTimeScore;
+    int score;
+    int allTimeScore;
 };
 
 #endif /* PLAYER_H */
