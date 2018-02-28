@@ -8,6 +8,8 @@
 #include <cstdlib>
 #include <iostream>
 #include <fstream>
+#include <string>
+#include <cstring>
 #include "Player.h"
 using namespace std;
 
@@ -30,7 +32,7 @@ void Player::init() {
     string wantName;
     string tempName;
     int tempID = 0;
-    double tempScore = 0;
+    int tempScore = 0;
     
     cout << "Enter a player name \n";
     cout << "Each player name will have a different history.\n";
@@ -50,7 +52,7 @@ void Player::init() {
             health = 100;
             score = 0;
             allTimeScore = tempScore;
-            printf("Great, your highest score so far is %.2f points!\n\n", allTimeScore);
+            printf("Great, your highest score so far is %d points!\n\n", allTimeScore);
             isSet = true;
             break;
         }
@@ -73,18 +75,21 @@ void Player::init() {
 void Player::save() {
     
     string tempName;
-    int tempID = 0;
-    double tempScore = 0;
+    int tempID;
+    int tempScore;
+    string wait;
     
     fstream fh("players.txt", ios::in | ios::out);
     fh.seekg(ios::beg);
     while(fh >> tempID >> tempName >> tempScore) {
-        // When a match is found, update players.txt
         if (id == tempID && tempScore < score) {
             streampos x = fh.tellg();
             x = x - (long) 1;
             fh.seekp(x);
-            fh << score;
+            // Keeping format correct, but not writing correct value. 
+            // Player::getScore() {return score;} shows correct score,
+            // which is called in game just before Player::save();
+            fh << printf("%d \n", score);
             break;
         }
     }
@@ -107,10 +112,10 @@ int Player::getHealth() {
     return health;
 }
 
-double Player::getScore() {
+int Player::getScore() {
     return score;
 }
 
-double Player::getAllTime() {
+int Player::getAllTime() {
     return allTimeScore;
 }
